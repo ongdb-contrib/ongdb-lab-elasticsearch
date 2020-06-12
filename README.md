@@ -1,6 +1,6 @@
 ## ONgDB Elastic{Search} Integration
 
-Integrates Neo4j change-feed with an ElasticSearch cluster.
+Integrates ONgDB change-feed with an ElasticSearch cluster.
 
 The different versions of ONgDB (3.5.x are supported on different branches).
 
@@ -25,10 +25,10 @@ Suppose that we keep nodes in our Neo4j instance labeled `Person` and
 separate ElasticSearch indices named `people` and `places`. For that,
 we would add the following directives to `conf/neo4j.conf`:
 
-----
+```
 elasticsearch.host_name=http://localhost:9200
 elasticsearch.index_spec=people:Person(first_name,last_name), places:Place(name)
-----
+```
 
 With that in place, Neo4j will now track changes to nodes labeled
 `Person` or `Place` and keep our ES instance running on
@@ -37,13 +37,13 @@ With that in place, Neo4j will now track changes to nodes labeled
 To perform an initial import, you can force a commit by executing a
 Cypher query like:
 
-----
+```
 MATCH n:Person
 SET n.first_name = n.first_name, n.last_name = n.last_name;
 
 MATCH n:Place
 SET n.name = n.name;
-----
+```
 
 ### ID / Labels fields
 By default, the indexes created will contain fields for the Neo4j ID and Labels, named `id` and `labels`. 
