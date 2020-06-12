@@ -4,7 +4,7 @@
   <groupId>data.lab.engineering</groupId>
   <artifactId>ongdb-lab-elasticsearch</artifactId>
   <name>ongdb-elasticsearch</name>
-  <version>1.0.0</version>
+  <version>3.5.17</version>
   <description>ONgDB Elasticsearch Integration</description>
   <licenses>
     <license>
