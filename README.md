@@ -1,23 +1,23 @@
-== ONgDB Elastic{Search} Integration
+## ONgDB Elastic{Search} Integration
 
 Integrates Neo4j change-feed with an ElasticSearch cluster.
 
 The different versions of ONgDB (3.5.x are supported on different branches).
 
-=== Approach
+### Approach
 
 This Neo4j Kernel Extension updates an ElasticSearch instance or cluster with changes in the graph.
 
 A transaction event listener checks changed Nodes against a given label, renders the whole node as json document and indexes all changes in bulk with ES.
 
-=== Installation
+### Installation
 
 * Download the jar from the [latest release].
 * Copy to `$NEO4J_HOME/plugins` or for Neo4j community to the plugins folder that you find on the `Options` pane.
 * Modify `$NEO4J_HOME/conf/neo4j.conf` accordingly (see the Example section)
 * Restart Neo4j
 
-=== Example
+### Example
 
 Suppose that we keep nodes in our Neo4j instance labeled `Person` and
 `Place`, and that we want to index the values of the `first_name` and
@@ -45,7 +45,7 @@ MATCH n:Place
 SET n.name = n.name;
 ----
 
-==== ID / Labels fields
+### ID / Labels fields
 By default, the indexes created will contain fields for the Neo4j ID and Labels, named `id` and `labels`. 
 These will be auto-created as searchable fields, but, if you'd prefer they not be included,
 simply add one or both of these lines to your `conf/neo4j.conf` file.
@@ -55,7 +55,7 @@ elasticsearch.include_id_field=false
 elasticsearch.include_labels_field=false
 ```
 
-=== Discovery
+### Discovery
 By default discovery (discovering of nodes within a cluster) is turned off.
 If you would like to turn discovery on, use the discovery option.
 
@@ -63,11 +63,11 @@ If you would like to turn discovery on, use the discovery option.
 elasticsearch.discovery=true
 ```
 
-=== Developing
+### Developing
 
 To run the tests, run `mvn test`. Make sure that an elastic{search} server is running on
 `localhost:9200`.
 
-=== Todo
+### Todo
 
 * Support indexing of relationships

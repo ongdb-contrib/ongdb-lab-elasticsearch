@@ -50,7 +50,7 @@ public class JestDefaultHttpConfigFactoryTest {
 
   @Test
   public void itCanSSL() throws Throwable {
-    subject = JestDefaultHttpConfigFactory.getConfigFor("https://localhost:9200", true);
+    subject = JestDefaultHttpConfigFactory.getConfigFor("https://10.20.0.157:9200", true);
 
     assertEquals("https://", subject.getDefaultSchemeForDiscoveredNodes());
   }
