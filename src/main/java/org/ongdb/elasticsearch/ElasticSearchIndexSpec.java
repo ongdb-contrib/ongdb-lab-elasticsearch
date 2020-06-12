@@ -1,12 +1,16 @@
-package org.neo4j.elasticsearch;
+package org.ongdb.elasticsearch;
+/*
+ *
+ * Data Lab - graph database organization.
+ *
+ */
 
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 class ElasticSearchIndexSpec {
 
     private String indexName;
-	private Set<String> properties = new LinkedHashSet<String>();
+	private Set<String> properties;
     
     public ElasticSearchIndexSpec(String indexName, Set<String> properties) {
         this.indexName = indexName;
@@ -21,7 +25,8 @@ class ElasticSearchIndexSpec {
 		return properties;
 	}
 
-	public String toString() {
+	@Override
+    public String toString() {
         String s = this.getClass().getSimpleName() + " " + indexName + ": (";
         for (String p: properties) {
             s += p + ",";

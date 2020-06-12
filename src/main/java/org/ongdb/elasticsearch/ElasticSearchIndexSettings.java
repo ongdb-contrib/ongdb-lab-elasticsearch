@@ -1,4 +1,9 @@
-package org.neo4j.elasticsearch;
+package org.ongdb.elasticsearch;
+/*
+ *
+ * Data Lab - graph database organization.
+ *
+ */
 
 import java.util.List;
 import java.util.Map;
@@ -9,23 +14,27 @@ public class ElasticSearchIndexSettings {
     private boolean includeLabelsField;
 
     public ElasticSearchIndexSettings(Map indexSpec, boolean includeIDField, boolean includeLabelsField) {
-    	this.indexSpec = indexSpec;
-    	this.includeIDField = includeIDField;
-    	this.includeLabelsField = includeLabelsField;
+        this.indexSpec = indexSpec;
+        this.includeIDField = includeIDField;
+        this.includeLabelsField = includeLabelsField;
     }
-    
+
     public Map<String, List<ElasticSearchIndexSpec>> getIndexSpec() {
-    	return indexSpec;
+        return indexSpec;
     }
+
     public boolean getIncludeIDField() {
-    	return includeIDField;
+        return includeIDField;
     }
+
     public void setIncludeIDField(boolean value) {
         includeIDField = value;
     }
+
     public boolean getIncludeLabelsField() {
-    	return includeLabelsField;
+        return includeLabelsField;
     }
+
     public void setIncludeLabelsField(boolean value) {
         includeLabelsField = value;
     }

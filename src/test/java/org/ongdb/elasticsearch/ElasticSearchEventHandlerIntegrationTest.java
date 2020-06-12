@@ -1,5 +1,9 @@
-package org.neo4j.elasticsearch;
-
+package org.ongdb.elasticsearch;
+/*
+ *
+ * Data Lab - graph database organization.
+ *
+ */
 import io.searchbox.client.JestClient;
 import io.searchbox.client.JestClientFactory;
 import io.searchbox.client.JestResult;
@@ -23,7 +27,7 @@ import static org.neo4j.helpers.collection.MapUtil.stringMap;
 
 public class ElasticSearchEventHandlerIntegrationTest {
 
-    public static final String LABEL = "MyLabel";
+    public static final String LABEL = "Label";
     public static final String INDEX = "my_index";
     public static final String INDEX_SPEC = INDEX + ":" + LABEL + "(foo)";
     private GraphDatabaseService db;

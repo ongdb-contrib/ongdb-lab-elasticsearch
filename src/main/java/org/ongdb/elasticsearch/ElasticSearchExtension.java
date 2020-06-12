@@ -1,4 +1,9 @@
-package org.neo4j.elasticsearch;
+package org.ongdb.elasticsearch;
+/*
+ *
+ * Data Lab - graph database organization.
+ *
+ */
 
 import io.searchbox.client.JestClient;
 import io.searchbox.client.JestClientFactory;
@@ -10,10 +15,6 @@ import java.util.Map;
 import java.util.logging.Logger;
 import java.text.ParseException;
 
-/**
- * @author mh
- * @since 25.04.15
- */
 public class ElasticSearchExtension extends LifecycleAdapter {
     private final GraphDatabaseService gds;
     private final static Logger logger = Logger.getLogger(ElasticSearchExtension.class.getName());
@@ -45,7 +46,9 @@ public class ElasticSearchExtension extends LifecycleAdapter {
 
     @Override
     public void init() throws Throwable {
-        if (!enabled) return;
+        if (!enabled) {
+            return;
+        }
 
         client = getJestClient(hostName, discovery);
         handler = new ElasticSearchEventHandler(client, indexSettings);
@@ -55,15 +58,17 @@ public class ElasticSearchExtension extends LifecycleAdapter {
 
     @Override
     public void shutdown() throws Throwable {
-        if (!enabled) return;
+        if (!enabled) {
+            return;
+        }
         gds.unregisterTransactionEventHandler(handler);
         client.shutdownClient();
         logger.info("Disconnected from ElasticSearch");
     }
 
     private JestClient getJestClient(final String hostName, final Boolean discovery) throws Throwable {
-      JestClientFactory factory = new JestClientFactory();
-      factory.setHttpClientConfig(JestDefaultHttpConfigFactory.getConfigFor(hostName, discovery));
-      return factory.getObject();
+        JestClientFactory factory = new JestClientFactory();
+        factory.setHttpClientConfig(JestDefaultHttpConfigFactory.getConfigFor(hostName, discovery));
+        return factory.getObject();
     }
 }

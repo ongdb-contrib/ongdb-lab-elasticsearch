@@ -1,5 +1,9 @@
-package org.neo4j.elasticsearch;
-
+package org.ongdb.elasticsearch;
+/*
+ *
+ * Data Lab - graph database organization.
+ *
+ */
 import io.searchbox.client.JestClient;
 import io.searchbox.client.JestClientFactory;
 import io.searchbox.client.JestResult;
@@ -26,6 +30,7 @@ public class ElasticSearchEventHandlerTest {
 
     public static final String INDEX = "test-index";
     public static final String LABEL = "Label";
+
     private ElasticSearchEventHandler handler;
     private ElasticSearchIndexSettings indexSettings;
     private GraphDatabaseService db;
@@ -41,6 +46,7 @@ public class ElasticSearchEventHandlerTest {
                 .multiThreaded(true)
                 .build());
         client = factory.getObject();
+
         db = new TestGraphDatabaseFactory().newImpermanentDatabase();
 
         Map<String, List<ElasticSearchIndexSpec>> indexSpec =
@@ -158,3 +164,4 @@ public class ElasticSearchEventHandlerTest {
         assertEquals("quux", response.getSourceAsObject(Map.class).get("foo"));
     }
 }
+

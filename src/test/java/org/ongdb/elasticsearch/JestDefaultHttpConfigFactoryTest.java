@@ -1,5 +1,9 @@
-package org.neo4j.elasticsearch;
-
+package org.ongdb.elasticsearch;
+/*
+ *
+ * Data Lab - graph database organization.
+ *
+ */
 import io.searchbox.client.config.HttpClientConfig;
 
 import java.util.*;
