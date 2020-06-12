@@ -1,4 +1,4 @@
-## ONgDB Elastic{Search} Integration
+## ONgDB ElasticSearch Integration
 
 Integrates ONgDB change-feed with an ElasticSearch cluster.
 
