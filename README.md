@@ -38,7 +38,7 @@ To perform an initial import, you can force a commit by executing a
 Cypher query like:
 
 ```
-MATCH n:Person
+MATCH (n:Person)
 SET n.first_name = n.first_name, n.last_name = n.last_name;
 
 MATCH n:Place
