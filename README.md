@@ -51,7 +51,7 @@ These will be auto-created as searchable fields, but, if you'd prefer they not b
 simply add one or both of these lines to your `conf/neo4j.conf` file.
 
 ```
-elasticsearch.include_id_field=false
+elasticsearch.include_id_field=false 
 elasticsearch.include_labels_field=false
 ```
 
