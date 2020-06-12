@@ -41,7 +41,7 @@ Cypher query like:
 MATCH (n:Person)
 SET n.first_name = n.first_name, n.last_name = n.last_name;
 
-MATCH n:Place
+MATCH (n:Place)
 SET n.name = n.name;
 ```
 
