@@ -29,7 +29,7 @@ import static org.junit.Assert.assertEquals;
 public class ElasticSearchEventHandlerTest {
 
     public static final String INDEX = "test-index";
-    public static final String LABEL = "Label";
+    public static final String LABEL = "测试Label";
 
     private ElasticSearchEventHandler handler;
     private ElasticSearchIndexSettings indexSettings;

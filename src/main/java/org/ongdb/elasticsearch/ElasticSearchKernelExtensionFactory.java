@@ -13,16 +13,19 @@ import org.neo4j.kernel.extension.ExtensionType;
 import org.neo4j.kernel.extension.KernelExtensionFactory;
 import org.neo4j.kernel.impl.spi.KernelContext;
 import org.neo4j.kernel.lifecycle.Lifecycle;
-
-import java.util.logging.Logger;
+import org.ongdb.properties.OngdbProperties;
 
 import static org.neo4j.kernel.configuration.Settings.*;
 
 public class ElasticSearchKernelExtensionFactory extends KernelExtensionFactory<ElasticSearchKernelExtensionFactory.Dependencies> {
 
-    private final static Logger LOGGER = Logger.getLogger(ElasticSearchKernelExtensionFactory.class.getName());
-
     public static final String SERVICE_NAME = "ELASTIC_SEARCH";
+
+    private static boolean TEST_LOAD_INDEX_SPEC = false;
+
+    public static void setTestLoadIndexSpec(boolean testLoadIndexSpec) {
+        TEST_LOAD_INDEX_SPEC = testLoadIndexSpec;
+    }
 
     @Description("Settings for the Elastic Search Extension")
     public static abstract class ElasticSearchSettings {
@@ -43,14 +46,20 @@ public class ElasticSearchKernelExtensionFactory extends KernelExtensionFactory<
         Config config = dependencies.getConfig();
 
         System.out.println("elasticsearch.host_name:" + config.get(ElasticSearchSettings.hostName));
-        System.out.println("elasticsearch.index_spec:" +config.get(ElasticSearchSettings.indexSpec));
         System.out.println("elasticsearch.discovery:" + config.get(ElasticSearchSettings.discovery));
         System.out.println("elasticsearch.include_id_field:" + config.get(ElasticSearchSettings.includeIDField));
         System.out.println("elasticsearch.include_labels_field:" + config.get(ElasticSearchSettings.includeLabelsField));
 
+        String indexSpec = OngdbProperties.getConfigurationByKey("elasticsearch.index_spec");
+        indexSpec = config.get(ElasticSearchSettings.hostName) == null ? null : indexSpec;
+        if (TEST_LOAD_INDEX_SPEC) {
+            indexSpec = config.get(ElasticSearchSettings.indexSpec);
+        }
+        System.out.println("elasticsearch.index_spec:" + indexSpec);
+
         return new ElasticSearchExtension(dependencies.getGraphDatabaseService(),
                 config.get(ElasticSearchSettings.hostName),
-                config.get(ElasticSearchSettings.indexSpec),
+                indexSpec,
                 config.get(ElasticSearchSettings.discovery),
                 config.get(ElasticSearchSettings.includeIDField),
                 config.get(ElasticSearchSettings.includeLabelsField));

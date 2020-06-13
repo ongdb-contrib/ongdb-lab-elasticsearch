@@ -23,7 +23,7 @@ public class ElasticSearchIndexSpecParser {
 
     private final static Logger LOGGER = Logger.getLogger(ElasticSearchIndexSpecParser.class.getName());
     /**
-     * 支持匹配中文
+     * 支持匹配中文标签
      **/
     private final static Pattern INDEX_SPEC_RE = Pattern.compile("(?<indexname>[a-z][a-z_-\\u4e00-\\u9fa5]+):(?<label>[A-Za-z0-9_\\u4e00-\\u9fa5]+)\\((?<props>[^\\)]+)\\)");
     private final static Pattern PROPS_SPEC_RE = Pattern.compile("((?!=,)([A-Za-z0-9_]+))+");

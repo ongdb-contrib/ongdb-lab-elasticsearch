@@ -35,6 +35,7 @@ public class ElasticSearchEventHandlerIntegrationTest {
 
     @Before
     public void setUp() throws Exception {
+        ElasticSearchKernelExtensionFactory.setTestLoadIndexSpec(true);
         JestClientFactory factory = new JestClientFactory();
         factory.setHttpClientConfig(new HttpClientConfig
                 .Builder("http://10.20.0.157:9200")
