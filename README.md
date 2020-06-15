@@ -27,7 +27,7 @@ we would add the following directives to `conf/neo4j.conf`:
 
 ```
 elasticsearch.host_name=http://localhost:9200
-elasticsearch.index_spec=people:Person(first_name,last_name), places:Place(name)
+elasticsearch.index_spec=people:Person(first_name,last_name)
 ```
 
 With that in place, Neo4j will now track changes to nodes labeled
@@ -38,11 +38,9 @@ To perform an initial import, you can force a commit by executing a
 Cypher query like:
 
 ```
-MATCH (n:Person)
-SET n.first_name = n.first_name, n.last_name = n.last_name;
+MATCH (n:Person) SET n.is_indices = 1; 
 
-MATCH (n:Place)
-SET n.name = n.name;
+MATCH (n:Person) REMOVE n.is_indices;
 ```
 
 ### ID / Labels fields
