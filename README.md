@@ -69,3 +69,4 @@ To run the tests, run `mvn test`. Make sure that an elastic{search} server is ru
 ### Todo
 
 * Support indexing of relationships
+
